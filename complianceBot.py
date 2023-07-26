@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 import os
 import openai
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -71,7 +72,7 @@ if check_password():
         complianceReturned = complianceChecker(_media)
         holder = generate_output(complianceReturned)
         
-        print("TEST:"+holder)
+        print(f"Bot {datetime.now()}: "+holder)
         return holder
         # return holder
 
@@ -100,7 +101,7 @@ if check_password():
 
     st.title("Compliance Bot")
     input_text = st.text_area("Enter the media here:", height=300)
-    print("TEST!:"+input_text)
+    print(f"User {datetime.now()}: "+input_text)
     if st.button("Submit"):
         result = main(input_text)
         st.markdown(f"**Result:**\n{result}")
